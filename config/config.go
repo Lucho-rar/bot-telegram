@@ -25,3 +25,16 @@ func LoadConfig() (string, string) {
 	}
 	return apiKey, spreadsheetId
 }
+
+func LoadBotConfig() string {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+
+	botToken := os.Getenv("TELEGRAM_TOKEN")
+	if botToken == "" {
+		log.Fatalf("TELEGRAM_TOKEN not set in .env file")
+	}
+	return botToken
+}
