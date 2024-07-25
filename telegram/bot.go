@@ -58,19 +58,11 @@ func StartBot(t string, srv *sheets.Service, spreadsheetId string) {
 			log.Fatalf("Unable to retrieve data from sheet: %v", err)
 		}
 
-		// fmt.Sprintf("%d", wait)
-		// for _, row := range data.Values {
-		// 	for _, col := range row {
-		// 		//sb.WriteString(fmt.Sprintf("%d: %v", i+1, col))
-		// 		sb.WriteString(fmt.Sprintf("%v", col))
-		// 	}
-		// }
-		for i := 0; i <= 15; i++ {
-			wait := time.Duration(1) * time.Second
-			time.Sleep(wait)
-			msg.Text = fmt.Sprintf("⏰ %d", i)
-			bot.Send(msg)
-		}
+		msg.Text = "15 segundos!⏰"
+		bot.Send(msg)
+		wait := time.Duration(15) * time.Second
+		time.Sleep(wait)
+
 		verb = data.ReturnData(datos)
 		//hoja.PrintData(data)
 		msg.Text = "Pasado simple: " + verb
@@ -93,18 +85,6 @@ func StartBot(t string, srv *sheets.Service, spreadsheetId string) {
 		}
 
 		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
-
-		// msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
-		// switch update.Message.Text {
-		// case "quien es la mas linda del mundo?":
-		// 	msg.Text = "¡Hola! es giuli rivoira	:)"
-		// default:
-		// 	msg.Text = "No entiendo ese comando."
-		// }
-
-		// if _, err := bot.Send(msg); err != nil {
-		// 	log.Panic(err)
-		// }
 	}
 }
 
