@@ -8,7 +8,6 @@ Telegram bot using:
 # _Function_
 Practice irregular verbs for English classes
 
-<p align="center">
-  <img src="img/demo.png"><br>
-</p>
+
+![demo](/img/demo.png)
 
